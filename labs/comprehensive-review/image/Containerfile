@@ -1,5 +1,7 @@
 FROM ubi8/ubi:8.3
 
+MAINTAINER Erik Silva https://github.com/erikyami
+
 ENV NEXUS_VERSION=2.14.3-02 \
     NEXUS_HOME=/opt/nexus
 
@@ -16,10 +18,8 @@ ADD ./nexus-start.sh ${NEXUS_HOME}/
 
 RUN ln -s ${NEXUS_HOME}/nexus-${NEXUS_VERSION} ${NEXUS_HOME}/nexus2
 
-
 WORKDIR ${NEXUS_HOME}
 
 VOLUME ${NEXUS_HOME}/sonatype-work
 
 CMD ["/bin/sh", "nexus-start.sh"]
-
